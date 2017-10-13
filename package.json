@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "webpack-dev-server",
+    "build" : "webpack -p",
     "watch": "webpack --watch"
   },
   "author": "",
