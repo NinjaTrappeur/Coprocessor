@@ -1,9 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/main.js',
+    entry: './src/main.ts',
     output: {
         path: __dirname + '/dist',
         filename: 'bundle.js'
@@ -20,8 +19,12 @@ module.exports = {
                 test: path.join(__dirname, 'es6'),
                 query: {
                   presets: 'es2015',
-                },
-            }
+                }
+            },
+               {
+                loader: 'awesome-typescript-loader',
+                test: /\.ts$/,
+               },
         ]
     },
     stats: {
@@ -30,4 +33,5 @@ module.exports = {
     },
     // Create Sourcemaps for the bundle
     devtool: 'source-map',
+    resolve: { extensions: [".web.ts", ".web.js", ".ts", ".js"] }
 };
