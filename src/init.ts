@@ -1,7 +1,11 @@
 import * as THREE from "three";
-import {Scene, createWorld} from "./data/world"
+import {Scene, World, createWorld} from "./data/world"
 
-export function init () {
-  let world = createWorld();
-  document.body.appendChild(world.renderer.domElement);
+export function init (): Promise<World> {
+  let worldPromise = createWorld ();
+  createWorld().then((world)=>{
+    document.body.appendChild(world.renderer.domElement);
+    world.music.play();
+  });
+  return worldPromise;
 }
