@@ -6,6 +6,7 @@ export interface World {
   camera:        THREE.PerspectiveCamera 
   scenes:        [Scene],
   ms:            number,
+  play:          boolean,
   music:         THREE.Audio,
   audioListener: THREE.AudioListener
 }
@@ -46,6 +47,7 @@ export function createWorld (): Promise<World> {
           camera: new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
           scenes: [prList[1]],
           ms: 0,
+          play: false,
           music: music['audio'],
           audioListener: music['audioListener']});
       });
