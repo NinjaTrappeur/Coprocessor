@@ -1,7 +1,10 @@
 import {init} from "./init";
+import {render} from "./render";
 
 main();
 
 function main() {
-  init();
+  init().then(world =>{
+    render(world);
+  });
 }

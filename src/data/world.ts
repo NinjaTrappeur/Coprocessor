@@ -5,6 +5,7 @@ export interface World {
   renderer:      THREE.WebGLRenderer,
   camera:        THREE.PerspectiveCamera 
   scenes:        [Scene],
+  startTime?:    Date,
   ms:            number,
   play:          boolean,
   music:         THREE.Audio,
