@@ -15,6 +15,7 @@ export function init (): Promise<World> {
 function createDebugGui (world: World) {
   let gui = new DAT.GUI();
   gui.add(world, "ms", 0, 256000).listen();
+
   let playButton = gui.add(world, "play")
   playButton.onChange(b => {
     if(b){
@@ -26,5 +27,16 @@ function createDebugGui (world: World) {
       world.play = false;
       world.music.stop();}
   });
+
+  let cameraFolder = gui.addFolder("Camera");
+  let camera       = world.camera;
+  let cameraPos    = cameraFolder.addFolder("Position");
+  let cameraRot    = cameraFolder.addFolder("Rotation");
+  cameraPos.add(camera.position, "x")
+  cameraPos.add(camera.position, "y")
+  cameraPos.add(camera.position, "z")
+  cameraRot.add(camera.rotation, "x")
+  cameraRot.add(camera.rotation, "y")
+  cameraRot.add(camera.rotation, "z")
   return gui;
 }
